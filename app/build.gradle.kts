@@ -195,16 +195,6 @@ fun configureAppSigningConfigsForRelease(project: Project) {
                 enableV2Signing = true
             }
         }
-        buildTypes {
-            release {
-                // signingConfig = signingConfigs.findByName("release")  <-- 注释掉或删除这行
-                minifyEnabled false  // 如果原本有这一行，保留它
-                // 其他配置保持不变...
-            }
-            debug {
-                // signingConfig = signingConfigs.findByName("release")  <-- 注释掉或删除这行
-            }
-        }
     }
 }
 
