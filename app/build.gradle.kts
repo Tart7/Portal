@@ -75,6 +75,10 @@ android {
 
     buildTypes {
         release {
+            // 👇👇👇【重点】加上这一行！👇👇👇
+            // 这句话的意思是：发布版(Release)也强制使用调试(Debug)签名
+            signingConfig = signingConfigs.getByName("debug")
+
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -85,10 +89,12 @@ android {
         }
 
         debug {
+            // debug 默认就有签名，不动它
             manifestPlaceholders["APP_VERSION"] = "${defaultConfig.versionName}-debug"
             manifestPlaceholders["BUGLY_ENABLE_DEBUG"] = "true"
         }
     }
+
 
     android.applicationVariants.all {
         outputs.map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
